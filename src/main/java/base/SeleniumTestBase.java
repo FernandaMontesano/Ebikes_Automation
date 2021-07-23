@@ -7,6 +7,7 @@ public class SeleniumTestBase {
 
 	public WebDriver driver;
 
+	
 	@BeforeMethod
 	public void testSetup() {
 		WebDriverFactory webdrivermanager = new WebDriverFactory();
