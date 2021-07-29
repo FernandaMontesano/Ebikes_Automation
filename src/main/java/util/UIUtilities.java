@@ -18,11 +18,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class UIUtilities {
 
 	protected WebDriver driver;
-	static WebDriverWait wait;
+	private WebDriverWait wait;
 	
 	public UIUtilities (WebDriver driver) {
 		this.driver = driver;
-		wait = new WebDriverWait(driver, Duration.ofSeconds(30, 1));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		PageFactory.initElements(driver, this);
 	}
 
