@@ -14,11 +14,13 @@ public class VerifyCreateAccount extends SeleniumTestBase{
 	String appName = "E-Bikes";
 	String tabName = "Accounts";
 	String accountName = "Test_ACcount_"+RandomStringUtils.randomAlphanumeric(16);
-	@Test (groups = "Regression", enabled = true )
+	
+	
+	@Test (groups = { "Regression", "Account" }, enabled = true )
 	public void testCreateAccount() throws Exception {
-
 		UIUtilities util = new UIUtilities(driver);
 		AccountPage ap = new AccountPage(driver);
+		
 		try {
 			ap.userLogIn(driver, propertyReader.getUserName(), propertyReader.getUserPassword(), appName );
 			ap.openTab(tabName, driver);
@@ -34,7 +36,7 @@ public class VerifyCreateAccount extends SeleniumTestBase{
 			throw e;
 		}
 		finally {
-			System.out.println("Test Completed");
+			System.out.println("VerifyCreateAccount Test Completed");
 		}
 	}
 

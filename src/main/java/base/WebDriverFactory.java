@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -43,21 +44,25 @@ public class WebDriverFactory extends SeleniumTestBase {
 		ChromeOptions chromeOptions = new ChromeOptions();
 		// set ExperimentalOption - prefs
 		chromeOptions.setExperimentalOption("prefs", prefs);
-		chromeOptions.addArguments("start-maximized"); 
-		chromeOptions.addArguments("enable-automation"); 
-		chromeOptions.addArguments("--no-sandbox"); 
-		chromeOptions.addArguments("--disable-infobars"); 
-		chromeOptions.addArguments("--disable-dev-shm-usage"); 
-		chromeOptions.addArguments("--disable-browser-side-navigation"); 
+		chromeOptions.addArguments("start-maximized");
+		chromeOptions.addArguments("enable-automation");
+		chromeOptions.addArguments("--no-sandbox");
+		chromeOptions.addArguments("--disable-extensions");
+		chromeOptions.addArguments("--dns-prefetch-disable");
+		chromeOptions.addArguments("--disable-infobars");
+		chromeOptions.addArguments("--disable-dev-shm-usage");
+		chromeOptions.addArguments("--disable-browser-side-navigation");
 		chromeOptions.addArguments("--disable-gpu");
+		chromeOptions.addArguments("disable-features=NetworkService");
+		chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+		
 		driver = new ChromeDriver(chromeOptions);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-		/*
-		 * driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		 * driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-		 */
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30L));
+		driver.manage().timeouts().setScriptTimeout(Duration.ofSeconds(3L));
+
+
 		return driver;
 
 	}
@@ -66,10 +71,10 @@ public class WebDriverFactory extends SeleniumTestBase {
 		WebDriverManager.firefoxdriver().setup();
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
-		/*
-		 * driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		 * driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-		 */
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+
 		return driver;
 
 	}
