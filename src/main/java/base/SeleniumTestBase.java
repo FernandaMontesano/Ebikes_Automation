@@ -5,10 +5,10 @@ import org.testng.annotations.*;
 
 public class SeleniumTestBase {
 
-	public WebDriver driver;
+	public WebDriver driver = null;
 
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void testSetup() {
 		WebDriverFactory webdrivermanager = new WebDriverFactory();
 		driver = webdrivermanager.CreateBrowser();		
@@ -21,9 +21,12 @@ public class SeleniumTestBase {
 		this.driver = driver;
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
+		
+		driver.close();
 		driver.quit();
+	
 	}
 	
 }

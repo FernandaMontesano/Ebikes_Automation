@@ -9,8 +9,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
- 	<maven.compiler.source>1.8</maven.compiler.source>
- 	<maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.release>11</maven.compiler.release>
 	</properties>
 <build>
     <plugins>
@@ -28,7 +27,7 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
-            <configuration>
+           <configuration>
                 <release>11</release>
             </configuration>
         </plugin>
@@ -47,13 +46,13 @@
    	 	<groupId>org.testng</groupId>
    		<artifactId>testng</artifactId>
     <version>7.4.0</version>
-    <scope>test</scope>
+    <!-- <scope>compile</scope> -->
 	</dependency>
 		<dependency>
 	    <groupId>io.github.bonigarcia</groupId>
 	    <artifactId>webdrivermanager</artifactId>
 	    <version>4.4.3</version>
-	    <scope>test</scope>
+	   <!--  <scope>compile</scope> -->
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 <dependency>
