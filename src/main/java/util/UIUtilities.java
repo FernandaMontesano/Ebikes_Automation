@@ -3,6 +3,7 @@ package util;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -13,18 +14,20 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.google.common.base.Function;
+
 
 
 public class UIUtilities {
 
-	protected WebDriver driver;
-	private WebDriverWait wait;
+	public WebDriver driver;
+	public WebDriverWait wait;
 	
-	public UIUtilities (WebDriver driver) {
-		this.driver = driver;
-		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		PageFactory.initElements(driver, this);
-	}
+	/*
+	 * public UIUtilities (WebDriver driver) throws Exception { this.driver =
+	 * driver; wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	 * PageFactory.initElements(driver, this); }
+	 */
 
 	/**
 	 * @param millis Time in milliseconds to wait for the page to Load
@@ -53,18 +56,30 @@ public class UIUtilities {
 		}
 	}
 
-	/**
-	 * @param driver
-	 * @param element
-	 */
-	public void waitForWebElement(WebDriver driver, WebElement element) {
+	public  WebDriver waitForElementToBeDisplayed(WebDriver driver,  WebElement webElement){
+	    final String myElementxpath =getXpathFromWebElement(webElement);
+	Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+			.withTimeout(Duration.ofSeconds(30))
+			.pollingEvery(Duration.ofSeconds(5)) 
+	   .ignoring(NoSuchElementException.class);
 
-		wait.until(ExpectedConditions.visibilityOf(element));
+	   webElement = wait.until(new Function<WebDriver, WebElement>()
+	   {    
+	       public WebElement apply(WebDriver driver)
+	       {   
+	    	   return driver.findElement(By.xpath(myElementxpath));
+	       }
+	   });  
+	return driver;
 
 	}
-	/*JavaScript methods*/
-	public void waitAndClick (WebElement element, WebDriver driver ) {
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		element.click();
+	public  String getXpathFromWebElement(WebElement webElement){
+	String strXpath = webElement.toString();
+	if(strXpath.contains("xpath: ")){
+
+	return (webElement.toString().substring((webElement.toString().indexOf("xpath: ")+7),(webElement.toString().length()-1)).trim());
 	}
+	return strXpath.trim();
+	}
+
 }

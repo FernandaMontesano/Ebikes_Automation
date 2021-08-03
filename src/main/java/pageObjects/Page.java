@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import pageConstants.AccountPageConstants;
 import pageConstants.PageConstants;
 import util.PropertiesFileReader;
 import util.UIUtilities;
@@ -30,18 +28,18 @@ public class Page {
 	
 	//Salesforce Login Page Methods. 
 	
-	@FindBy(name =PageConstants.USERNAME_TXT_FIELD)
+	@FindBy(xpath =PageConstants.USERNAME_TXT_FIELD)
 	private WebElement loginPageUserName;
 	public WebElement getLoginPageUserName() {
 		return loginPageUserName;
 	}
 	
-	@FindBy(name = PageConstants.PASSWORD_TXT_FIELD)
+	@FindBy(xpath = PageConstants.PASSWORD_TXT_FIELD)
 	private WebElement loginPagePassword;
 	public WebElement getLoginPagePassword() {
 		return loginPagePassword;
 	}
-	@FindBy(name = PageConstants.LOGIN_BTN)
+	@FindBy(xpath = PageConstants.LOGIN_BTN)
 	private WebElement loginPageLoginBtn;
 	public WebElement getLoginPageLoginBtn() {
 		return loginPageLoginBtn;
@@ -94,51 +92,51 @@ public class Page {
 	}
 	
 	
-	public WebDriver userLogIn (WebDriver driver, String username, String password) throws InterruptedException {
-		UIUtilities util = new UIUtilities(driver);
+	public  WebDriver userLogIn (WebDriver driver, String username, String password) throws Throwable {
+		UIUtilities util = new UIUtilities();
 		PropertiesFileReader prop = new PropertiesFileReader();
 		driver.get(prop.getApplicationUrl());
-		util.waitForWebElement(driver, getLoginPageUserName());
+		util.waitForElementToBeDisplayed(driver, getLoginPageUserName());
 		getLoginPageUserName().sendKeys(username);
-		util.waitForWebElement(driver, getLoginPagePassword());
+		util.waitForElementToBeDisplayed(driver, getLoginPagePassword());
 		getLoginPagePassword().sendKeys(password);
-		util.waitForWebElement(driver, getLoginPageLoginBtn());
+		util.waitForElementToBeDisplayed(driver, getLoginPageLoginBtn());
 		getLoginPageLoginBtn().click();
 		return driver;
 		
 	}
-	public WebDriver userLogIn (WebDriver driver, String username, String password, String appName) throws InterruptedException {
-		UIUtilities util = new UIUtilities(driver);
+	public WebDriver userLogIn (WebDriver driver, String username, String password, String appName) throws Throwable {
+		UIUtilities util = new UIUtilities();
 		PropertiesFileReader prop = new PropertiesFileReader();
 		String url = prop.getApplicationUrl();
 		driver.get(url);
-		util.waitForWebElement(driver, getLoginPageUserName());
+		util.waitForElementToBeDisplayed(driver, getLoginPageUserName());
 		getLoginPageUserName().sendKeys(username);
-		util.waitForWebElement(driver, getLoginPagePassword());
+		util.waitForElementToBeDisplayed(driver, getLoginPagePassword());
 		getLoginPagePassword().sendKeys(password);
-		util.waitForWebElement(driver, getLoginPageLoginBtn());
+		util.waitForElementToBeDisplayed(driver, getLoginPageLoginBtn());
 		getLoginPageLoginBtn().click();
 		openSalesforceApp(driver, "E-Bikes");
 		return driver;
 		
 	}
-	public void openSalesforceApp(WebDriver driver, String appName) {
-		UIUtilities util = new UIUtilities (driver);
-		util.waitForWebElement(driver, getAppLauncherIcon());
+	public void openSalesforceApp(WebDriver driver, String appName) throws Throwable {
+		UIUtilities util = new UIUtilities ();
+		util.waitForElementToBeDisplayed(driver, getAppLauncherIcon());
 		getAppLauncherIcon().click();
-		util.waitForWebElement(driver, getAppViewAllLnk());
+		util.waitForElementToBeDisplayed(driver, getAppViewAllLnk());
 		getAppViewAllLnk().click();
-		util.waitForWebElement(driver, getAppSearchField());
+		util.waitForElementToBeDisplayed(driver, getAppSearchField());
 		getAppSearchField().sendKeys(appName);
-		util.waitForWebElement(driver, getAppSearchFoundItem());
+		util.waitForElementToBeDisplayed(driver, getAppSearchFoundItem());
 		getAppSearchFoundItem().click();
 		Assert.assertTrue(getAppPageTitle(appName, driver).isDisplayed(), "There was a problem opening the required app.");
 	}
 	
-	public void openTab(String tabName, WebDriver driver) {
+	public void openTab(String tabName, WebDriver driver) throws Throwable {
 		
-		UIUtilities util = new UIUtilities (driver);
-		util.waitForWebElement(driver, getAppTabName(tabName, driver));
+		UIUtilities util = new UIUtilities ();
+		util.waitForElementToBeDisplayed(driver, getAppTabName(tabName, driver));
 		getAppTabName(tabName, driver).click();
 		util.waitForPageToLoad(4000);
 		

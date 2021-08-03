@@ -98,3 +98,61 @@ test-output/old/CloudGaia POM Selenium TestNg Suite/methods-not-run.html
 test-output/old/index.html
 test-output/testng-failed.xml
 test-output/testng-results.xml
+target/classes/base/SeleniumTestBase.class
+target/classes/base/WebDriverFactory.class
+target/classes/objects/Account.class
+target/classes/objects/Product.class
+target/classes/objects/ResellerOrder.class
+target/classes/pageConstants/AccountPageConstants.class
+target/classes/pageConstants/PageConstants.class
+target/classes/pageConstants/ProductExplorerPageConstants.class
+target/classes/pageConstants/ProductPageConstants.class
+target/classes/pageConstants/ResellerOrderPageConstants.class
+target/classes/pageObjects/AccountPage.class
+target/classes/pageObjects/Page.class
+target/classes/pageObjects/ProductExplorerPage.class
+target/classes/pageObjects/ProductPage.class
+target/classes/pageObjects/ResellerOrderPage.class
+target/classes/util/PropertiesFileReader.class
+target/classes/util/UIUtilities$1.class
+target/classes/util/UIUtilities.class
+target/surefire-reports/CloudGaia POM Selenium TestNg Suite/E-Bikes Regression.html
+target/surefire-reports/CloudGaia POM Selenium TestNg Suite/E-Bikes Regression.xml
+target/classes/base/SeleniumTestBase.class
+target/classes/base/WebDriverFactory.class
+target/classes/objects/Account.class
+target/classes/objects/Product.class
+target/classes/objects/ResellerOrder.class
+target/classes/pageConstants/AccountPageConstants.class
+target/classes/pageConstants/PageConstants.class
+target/classes/pageConstants/ProductExplorerPageConstants.class
+target/classes/pageConstants/ProductPageConstants.class
+target/classes/pageConstants/ResellerOrderPageConstants.class
+target/classes/pageObjects/AccountPage.class
+target/classes/pageObjects/Page.class
+target/classes/pageObjects/ProductExplorerPage.class
+target/classes/pageObjects/ProductPage.class
+target/classes/pageObjects/ResellerOrderPage.class
+target/classes/util/PropertiesFileReader.class
+target/classes/util/UIUtilities.class
+target/surefire-reports/old/CloudGaia POM Selenium TestNg Suite/E-Bikes Regression.properties
+target/test-classes/account/VerifyCreateAccount.class
+test-output/CloudGaia POM Selenium TestNg Suite/E-Bikes Regression.html
+test-output/CloudGaia POM Selenium TestNg Suite/E-Bikes Regression.xml
+test-output/Default suite/Default test.html
+test-output/Default suite/Default test.xml
+test-output/emailable-report.html
+test-output/index.html
+test-output/junitreports/TEST-account.VerifyCreateAccount.xml
+test-output/old/CloudGaia POM Selenium TestNg Suite/E-Bikes Regression.properties
+test-output/old/CloudGaia POM Selenium TestNg Suite/methods.html
+test-output/old/CloudGaia POM Selenium TestNg Suite/reporter-output.html
+test-output/old/CloudGaia POM Selenium TestNg Suite/testng.xml.html
+test-output/old/CloudGaia POM Selenium TestNg Suite/toc.html
+test-output/old/Default suite/classes.html
+test-output/old/Default suite/groups.html
+test-output/old/Default suite/methods-alphabetical.html
+test-output/old/Default suite/methods.html
+test-output/old/Default suite/toc.html
+test-output/old/index.html
+test-output/testng-results.xml
