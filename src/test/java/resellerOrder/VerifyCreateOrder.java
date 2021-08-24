@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import base.SeleniumTestBase;
 import pageObjects.AccountPage;
 import util.PropertiesFileReader;
-import util.UIUtilities;
 
 public class VerifyCreateOrder extends SeleniumTestBase{
 	PropertiesFileReader propertyReader = new PropertiesFileReader();

@@ -156,3 +156,32 @@ test-output/old/Default suite/methods.html
 test-output/old/Default suite/toc.html
 test-output/old/index.html
 test-output/testng-results.xml
+target/classes/base/SeleniumTestBase.class
+target/classes/base/WebDriverFactory.class
+target/classes/pageConstants/AccountPageConstants.class
+target/classes/pageConstants/PageConstants.class
+target/classes/pageObjects/Page.class
+target/classes/util/UIUtilities.class
+target/test-classes/account/VerifyAccountRequiredFields.class
+target/test-classes/account/VerifyCreateAccount.class
+target/test-classes/noPageObjectModel/CreateAccountNoPom.class
+target/test-classes/noPageObjectModel/VerifyAccountRequiredFieldsNoPom.class
+test-output/Default suite/Default test.html
+test-output/Default suite/Default test.xml
+test-output/Default suite/testng-failed.xml
+test-output/emailable-report.html
+test-output/index.html
+test-output/junitreports/TEST-account.VerifyAccountRequiredFields.xml
+test-output/junitreports/TEST-account.VerifyCreateAccount.xml
+test-output/junitreports/TEST-noPageObjectModel.createAccount.xml
+test-output/junitreports/TEST-noPageObjectModel.CreateAccountNoPom.xml
+test-output/junitreports/TEST-noPageObjectModel.VerifyAccountRequiredFieldsNoPom.xml
+test-output/old/Default suite/classes.html
+test-output/old/Default suite/groups.html
+test-output/old/Default suite/methods-alphabetical.html
+test-output/old/Default suite/methods.html
+test-output/old/Default suite/testng.xml.html
+test-output/old/Default suite/toc.html
+test-output/old/index.html
+test-output/testng-failed.xml
+test-output/testng-results.xml
