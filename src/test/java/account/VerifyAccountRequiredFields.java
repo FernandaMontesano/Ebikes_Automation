@@ -1,13 +1,14 @@
 package account;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import base.SeleniumTestBase;
 import pageObjects.AccountPage;
 import util.PropertiesFileReader;
 import util.UIUtilities;
 
-public class VerifyCreateAccount extends SeleniumTestBase{
+public class VerifyAccountRequiredFields extends SeleniumTestBase{
 
 	PropertiesFileReader propertyReader = new PropertiesFileReader();
 	String appName = "E-Bikes";
@@ -16,7 +17,7 @@ public class VerifyCreateAccount extends SeleniumTestBase{
 	
 	
 	@Test (groups = { "Regression", "Account" }, enabled = true )
-	public void testCreateAccount() throws Exception {
+	public void testAccountRequiredFields() throws Exception {
 		
 		UIUtilities util = new UIUtilities();
 		AccountPage ap = new AccountPage(driver);
@@ -26,12 +27,10 @@ public class VerifyCreateAccount extends SeleniumTestBase{
 			ap.openTab(tabName, driver);
 			util.waitForElementToBeDisplayed(driver, ap.getNewRecordBtn());
 			ap.getNewRecordBtn().click();
-			util.waitForElementToBeDisplayed(driver, ap.getAccountCPAccountName());
-			ap.getAccountCPAccountName().click();
-			ap.getAccountCPAccountName().sendKeys(accountName);
 			util.waitForElementToBeDisplayed(driver, ap.getAccountCPSaveBtn());
 			ap.getAccountCPSaveBtn().click();
-
+			Assert.assertTrue(ap.getAccountCPErrorMsg().getText().contains("Account Name"), "The Account Name is a required field");
+	
 		}catch(Exception e) {
 			e.printStackTrace();
 			throw e;

@@ -105,7 +105,7 @@ public class Page {
 		return driver;
 		
 	}
-	public WebDriver userLogIn (WebDriver driver, String username, String password, String appName) throws Throwable {
+	public WebDriver userLogIn (WebDriver driver, String username, String password, String appName) throws Exception {
 		UIUtilities util = new UIUtilities();
 		PropertiesFileReader prop = new PropertiesFileReader();
 		String url = prop.getApplicationUrl();
@@ -120,7 +120,7 @@ public class Page {
 		return driver;
 		
 	}
-	public void openSalesforceApp(WebDriver driver, String appName) throws Throwable {
+	public void openSalesforceApp(WebDriver driver, String appName) throws Exception {
 		UIUtilities util = new UIUtilities ();
 		util.waitForElementToBeDisplayed(driver, getAppLauncherIcon());
 		getAppLauncherIcon().click();
@@ -133,7 +133,7 @@ public class Page {
 		Assert.assertTrue(getAppPageTitle(appName, driver).isDisplayed(), "There was a problem opening the required app.");
 	}
 	
-	public void openTab(String tabName, WebDriver driver) throws Throwable {
+	public void openTab(String tabName, WebDriver driver) throws Exception {
 		
 		UIUtilities util = new UIUtilities ();
 		util.waitForElementToBeDisplayed(driver, getAppTabName(tabName, driver));
