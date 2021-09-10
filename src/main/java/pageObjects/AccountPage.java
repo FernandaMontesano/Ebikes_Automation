@@ -14,7 +14,6 @@ public class AccountPage extends Page{
 
 	public AccountPage (WebDriver driver) {
 		super(driver);
-		
 	}
 	public AccountPage init(WebDriver driver)throws MalformedURLException {
 		AccountPage accountPage = PageFactory.initElements(driver, AccountPage.class);

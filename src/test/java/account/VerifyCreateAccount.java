@@ -18,7 +18,7 @@ public class VerifyCreateAccount extends SeleniumTestBase{
 	@Test (groups = { "Regression", "Account" }, enabled = true )
 	public void testCreateAccount() throws Exception {
 		
-		UIUtilities util = new UIUtilities();
+		UIUtilities util = new UIUtilities(driver);
 		AccountPage ap = new AccountPage(driver);
 		
 		try {

@@ -93,7 +93,7 @@ public class Page {
 	
 	
 	public  WebDriver userLogIn (WebDriver driver, String username, String password) throws Throwable {
-		UIUtilities util = new UIUtilities();
+		UIUtilities util = new UIUtilities(driver);
 		PropertiesFileReader prop = new PropertiesFileReader();
 		driver.get(prop.getApplicationUrl());
 		util.waitForElementToBeDisplayed(driver, getLoginPageUserName());
@@ -106,7 +106,7 @@ public class Page {
 		
 	}
 	public WebDriver userLogIn (WebDriver driver, String username, String password, String appName) throws Exception {
-		UIUtilities util = new UIUtilities();
+		UIUtilities util = new UIUtilities(driver);
 		PropertiesFileReader prop = new PropertiesFileReader();
 		String url = prop.getApplicationUrl();
 		driver.get(url);
@@ -121,7 +121,7 @@ public class Page {
 		
 	}
 	public void openSalesforceApp(WebDriver driver, String appName) throws Exception {
-		UIUtilities util = new UIUtilities ();
+		UIUtilities util = new UIUtilities (driver);
 		util.waitForElementToBeDisplayed(driver, getAppLauncherIcon());
 		getAppLauncherIcon().click();
 		util.waitForElementToBeDisplayed(driver, getAppViewAllLnk());
@@ -135,7 +135,7 @@ public class Page {
 	
 	public void openTab(String tabName, WebDriver driver) throws Exception {
 		
-		UIUtilities util = new UIUtilities ();
+		UIUtilities util = new UIUtilities (driver);
 		util.waitForElementToBeDisplayed(driver, getAppTabName(tabName, driver));
 		getAppTabName(tabName, driver).click();
 		util.waitForPageToLoad(4000);

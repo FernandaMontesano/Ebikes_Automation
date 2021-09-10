@@ -15,9 +15,13 @@ import com.google.common.base.Function;
 
 
 public class UIUtilities {
-
 	public WebDriver driver;
 	public WebDriverWait wait;
+	
+	public UIUtilities(WebDriver driver) {
+		this.driver = driver;
+	}
+	
 	
 
 	/**
