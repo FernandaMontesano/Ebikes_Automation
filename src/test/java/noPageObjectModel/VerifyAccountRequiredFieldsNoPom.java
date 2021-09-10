@@ -20,7 +20,7 @@ public class VerifyAccountRequiredFieldsNoPom extends SeleniumTestBase{
 	@Test (groups = { "Regression", "Account" }, enabled = true )
 	public void AccountRequiredFieldsNoPom() throws Exception {
 		
-		UIUtilities util = new UIUtilities();
+		UIUtilities util = new UIUtilities(driver);
 		AccountPage ap = new AccountPage(driver);
 			
 		try {
