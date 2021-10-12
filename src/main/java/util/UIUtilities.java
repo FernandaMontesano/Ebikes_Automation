@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,22 +18,44 @@ import com.google.common.base.Function;
 public class UIUtilities {
 	public WebDriver driver;
 	public WebDriverWait wait;
-	
+
 	public UIUtilities(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-	
 
+
+	//IMPLICIT WAIT
 	/**
 	 * @param millis Time in milliseconds to wait for the page to Load
 	 */
-	public  void waitForPageToLoad(long millis) {
-		try {
-			Thread.sleep(millis);
-		}catch(InterruptedException e) {
-			e.printStackTrace();
-		}
+	public  void waitForPageToLoad(long seconds) throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+	}
+
+	// EXPLICIT WAIT
+	public  void waitForElementVisible( WebElement element) throws InterruptedException {
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(getXpathFromWebElement(element))));
+	}
+	
+	//FLUENT WAIT	
+
+	public  WebDriver waitForElementToBeDisplayed(WebDriver driver,  WebElement webElement){
+		final String myElementxpath =getXpathFromWebElement(webElement);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(30))
+				.pollingEvery(Duration.ofSeconds(5)) 
+				.ignoring(NoSuchElementException.class);
+
+		webElement = wait.until(new Function<WebDriver, WebElement>()
+		{    
+			public WebElement apply(WebDriver driver)
+			{   
+				return driver.findElement(By.xpath(myElementxpath));
+			}
+		});  
+		return driver;
+
 	}
 
 	/**
@@ -51,30 +74,14 @@ public class UIUtilities {
 		}
 	}
 
-	public  WebDriver waitForElementToBeDisplayed(WebDriver driver,  WebElement webElement){
-	    final String myElementxpath =getXpathFromWebElement(webElement);
-	Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-			.withTimeout(Duration.ofSeconds(30))
-			.pollingEvery(Duration.ofSeconds(5)) 
-	   .ignoring(NoSuchElementException.class);
 
-	   webElement = wait.until(new Function<WebDriver, WebElement>()
-	   {    
-	       public WebElement apply(WebDriver driver)
-	       {   
-	    	   return driver.findElement(By.xpath(myElementxpath));
-	       }
-	   });  
-	return driver;
-
-	}
 	public  String getXpathFromWebElement(WebElement webElement){
-	String strXpath = webElement.toString();
-	if(strXpath.contains("xpath: ")){
+		String strXpath = webElement.toString();
+		if(strXpath.contains("xpath: ")){
 
-	return (webElement.toString().substring((webElement.toString().indexOf("xpath: ")+7),(webElement.toString().length()-1)).trim());
-	}
-	return strXpath.trim();
+			return (webElement.toString().substring((webElement.toString().indexOf("xpath: ")+7),(webElement.toString().length()-1)).trim());
+		}
+		return strXpath.trim();
 	}
 
 }
