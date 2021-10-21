@@ -23,8 +23,7 @@ public class SeleniumTestBase {
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		
-		driver.close();
+
 		driver.quit();
 	
 	}
