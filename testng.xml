@@ -11,9 +11,9 @@
       </groups>  -->
   	 <classes>
   		<class name = "account.VerifyCreateAccount"/>
-  		<class name = "product.VerifyCreateProduct"/>
+  		<!-- <class name = "product.VerifyCreateProduct"/>
   		<class name = "product.VerifyProductExplorerFilter"/>
-  		<class name = "resellerOrder.VerifyCreateOrder"/>
+  		<class name = "resellerOrder.VerifyCreateOrder"/> -->
   	 </classes>
     </test> 
 </suite> <!-- Sanity_Suite -->
